@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Wave of Change</title>
+
+    <link rel="icon" href="/assets/logo_2.png"
+        type="image/x-icon" />
+
+	<!-- Bootstrap 5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<!-- Bootstrap Icons (for sound toggle) -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+	<script type="module"
+		src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
+	<!-- Ambient audio -->
+	<!-- Replace src with your ocean/ambient mp3. Autoplay must be muted; user can unmute via button. -->
+	<audio id="ambientAudio" src="audio/zapsplat_nature_underwater_ambience_deep_001_30526.mp3" preload="auto" loop
+		muted></audio>
+
+	<!-- NAVBAR -->
+	<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" href="#">
+				<img src="assets/logo_2.png" alt="Wave of Change" class="navbar-logo" />
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-end" id="navContent">
+				<ul class="navbar-nav align-items-lg-center gap-lg-3">
+					<li class="nav-item">
+						<a class="nav-link" href="#mission">Our mission</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#problems">Problems</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#help">How to help</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#gallery">Gallery</a>
+					</li>
+					<li class="nav-item d-flex align-items-center">
+						<!-- Shoelace switch for ambient sound.
+								Checked = sound ON (audio unmuted); Unchecked = sound OFF (muted).
+								Starts unchecked to comply with autoplay policies (audio begins muted). -->
+						<sl-switch id="soundBtn" class="ms-lg-2" aria-label="Toggle ambient sound">
+							<span class="d-none d-sm-inline">Sound</span>
+						</sl-switch>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- HERO -->
+	<header class="hero position-relative text-center text-light">
+		<!-- Waves (image layers using assets/wave_*.png) -->
+		<div class="waves">
+			<picture>
+				<img class="wave-img wave-1" src="assets/wave_1.png" alt="wave layer 1" />
+			</picture>
+			<picture>
+				<img class="wave-img wave-2" src="assets/wave_2.png" alt="wave layer 2" />
+			</picture>
+			<picture>
+				<img class="wave-img wave-3" src="assets/wave_3.png" alt="wave layer 3" />
+			</picture>
+			<picture>
+				<img class="wave-img wave-4" src="assets/wave_4.png" alt="wave layer 4" />
+			</picture>
+		</div>
+
+		<div class="hero-content container position-relative">
+			<img src="assets/logo.png" alt="Wave of Change" class="hero-logo img-fluid" />
+		</div>
+	</header>
+
+	<section id="mission" class="mission-section py-5">
+		<h2 class="section-title text-center reveal-on-scroll reveal-up">
+			Our mission
+		</h2>
+		<div class="container py-5">
+			<div class="main-timeline-2">
+				<div class="timeline-2 left-2 reveal-on-scroll reveal-right" style="transition-delay: 120ms">
+					<div class="card">
+						<div class="card-body p-4">
+							<p class="mb-0 text-end">
+								Our goal is to raise awareness about the growing issue of water pollution and 
+								to inspire people to take action in protecting and restoring the world’s water sources.
+								Every river, lake, and ocean plays a vital role in maintaining life on Earth,
+								yet human activities continue to damage these ecosystems through plastic waste,
+								chemical dumping, and careless industrial practices. By sharing knowledge, 
+								we hope to open people’s eyes to the seriousness of this problem and the urgent need for change.
+							</p>
+							<br />
+							<p class="mb-0 text-end">
+								We aim to educate our visitors about how water pollution affects not only marine 
+								life but also the environment and human health. Polluted water can destroy habitats,
+								poison animals, and harm communities that depend on clean water for survival.
+								Understanding these effects helps us realize that water pollution 
+								is not a distant issue—it impacts all of us, no matter where we live.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="timeline-2 right-2 reveal-on-scroll reveal-left" style="transition-delay: 220ms">
+					<div class="card">
+						<div class="card-body p-4">
+							<p class="mb-0 text-start">
+								Through this website, we encourage individuals to take simple but meaningful steps toward protecting our planet’s waters.
+								Reducing plastic use, properly disposing of waste, supporting eco-friendly brands, 
+								and joining local clean-up events are all small actions that can make a big difference. 
+								When everyone contributes, we move closer to creating cleaner and healthier ecosystems.
+							</p>
+							<br />
+							<p class="mb-0 text-start">
+								Ultimately, our mission is to build a community that values clean water and 
+								takes responsibility for protecting it. We believe that awareness leads to action,
+								and action leads to change. By working together, we can preserve this precious
+								resource and ensure that future generations inherit a world where clean, 
+								safe water is available to all living beings.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- decorative mission-only bubbles (non-interactive) -->
+		<div class="mission-bubbles" aria-hidden="true">
+			<div class="mission-bubble b-m1"></div>
+			<div class="mission-bubble b-m2"></div>
+			<div class="mission-bubble b-m3"></div>
+			<div class="mission-bubble b-m4"></div>
+			<div class="mission-bubble b-m5"></div>
+		</div>
+
+		<!-- decorative fishes (grouped image with three fishes) -->
+		<div class="mission-fishes" aria-hidden="true">
+			<img src="assets/fish.png" alt="" class="mission-fish" />
+		</div>
+	</section>
+
+	<!-- PROBLEMS -->
+	<section id="problems" class="problems-section d-flex align-items-center">
+		<div class="container position-relative">
+			<h2 class="section-title text-center text-light mb-4 reveal-on-scroll reveal-up">
+				Problems
+			</h2>
+
+			<!-- Top stats -->
+			<div class="row justify-content-center text-light problems-stats g-4 mb-3">
+				<div class="col-4 col-md-3 text-center reveal-on-scroll reveal-up" style="transition-delay: 60ms">
+					<div class="problems-percent" data-target="45">45%</div>
+					<div class="problems-caption">Agriculture Runoff</div>
+				</div>
+				<div class="col-4 col-md-3 text-center reveal-on-scroll reveal-up" style="transition-delay: 140ms">
+					<div class="problems-percent" data-target="30">30%</div>
+					<div class="problems-caption">Industrial Waste</div>
+				</div>
+				<div class="col-4 col-md-3 text-center reveal-on-scroll reveal-up" style="transition-delay: 220ms">
+					<div class="problems-percent" data-target="25">25%</div>
+					<div class="problems-caption">Domestic sweage and Urban Runoff</div>
+				</div>
+			</div>
+
+			<!-- Center eye graphic -->
+			<div class="problems-eye-wrap mx-auto reveal-on-scroll reveal-zoom" style="transition-delay: 120ms">
+				<img src="assets/eye.png" alt="Eye" class="eye" />
+				<img src="assets/eye_back.png" alt="Eye background" class="eye-back" />
+			</div>
+
+			<!-- Callouts around the eye -->
+			<div class="problems-callouts text-light">
+				<div class="callout callout-left reveal-on-scroll reveal-right" style="transition-delay: 40ms">
+					<p>
+						Includes fertilizers, pesticides, and animal waste that wash into rivers and oceans, 
+						causing eutrophication and harming aquatic life.
+					</p>
+				</div>
+				<div class="callout callout-right reveal-on-scroll reveal-left" style="transition-delay: 120ms">
+					<p>
+						Covers chemical discharges, heavy metals, and toxins released from factories 
+						and manufacturing plants into nearby water bodies.
+					</p>
+				</div>
+				<div class="callout callout-bottom text-center reveal-on-scroll reveal-up"
+					style="transition-delay: 200ms">
+					<p>
+						Includes untreated household wastewater, sewage leaks, and polluted
+						 stormwater that carry harmful bacteria and waste into waterways.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- HOW TO HELP (wireframe) -->
+	<section id="help" class="help-section position-relative py-5">
+		<div class="container py-5 text-light">
+			<h2 class="section-title text-center text-light mb-4 reveal-on-scroll reveal-up">
+				How to help?
+			</h2>
+
+			<!-- Video thumbnail (rounded PNG). Clicking opens Shoelace dialog with the video. -->
+			<div class="text-center mb-4">
+				<div id="helpVideoThumb" class="help-video-rotator reveal-on-scroll reveal-zoom"
+					style="transition-delay: 100ms" role="button" aria-label="Play video" tabindex="0"></div>
+			</div>
+
+	<!-- Shoelace dialog with the video inside (loaded on open) -->
+	<sl-dialog id="helpVideoDialog" label="How to help - Video" class="help-video-dialog">
+		<div class="video-responsive">
+			<iframe id="helpVideoFrame"
+				data-src="https://www.youtube.com/embed/sYIoPIstObU?si=gXZ6hqL1ozKeg-aa" 
+				title="How to help video"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+				style="width: 100%; height: 100%; border: 0"></iframe>
+		</div>
+	</sl-dialog>
+
+			<div class="help-list mt-4">
+				<div class="row align-items-center mb-5 reveal-on-scroll reveal-left" style="transition-delay: 60ms">
+					<div class="col-md-1 text-center">
+						<div class="help-number">1</div>
+					</div>
+					<div class="col-md-11">
+						<sl-details summary="Reduce Plastic Waste">
+							<p>
+								Plastic is one of the biggest threats to clean water.
+								Single-use items like bottles, bags, and straws often end up
+								in rivers and oceans, where they break down into microplastics 
+							    that harm marine life and enter our food chain. 
+								By reducing plastic use choosing reusable bottles,
+								eco-friendly bags, and avoiding excessive packaging we 
+								can significantly cut down pollution at the source. 
+								Every small choice adds up to cleaner oceans and safer water for everyone.
+							</p>
+						</sl-details>
+					</div>
+				</div>
+
+				<div class="row align-items-center mb-5 flex-md-row-reverse reveal-on-scroll reveal-right"
+					style="transition-delay: 120ms">
+					<div class="col-md-1 text-center">
+						<div class="help-number">2</div>
+					</div>
+					<div class="col-md-11">
+						<sl-details summary="Proper Waste Disposal">
+							<p>
+								Many forms of water pollution begin with improper waste management. 
+								Throwing oil, chemicals, or household waste down the drain contaminates 
+								groundwater and aquatic ecosystems. Disposing of waste correctly,
+								recycling when possible, and taking hazardous materials (like paint,
+								batteries, and motor oil) to proper collection centers helps prevent
+								these toxins from reaching waterways. Responsible waste disposal is a 
+								simple but powerful way to protect the planet.
+							</p>
+						</sl-details>
+					</div>
+				</div>
+
+				<div class="row align-items-center mb-5 reveal-on-scroll reveal-left" style="transition-delay: 180ms">
+					<div class="col-md-1 text-center">
+						<div class="help-number">3</div>
+					</div>
+					<div class="col-md-11">
+						<sl-details summary="Support Clean-Up Initiatives">
+							<p>
+								Participating in or organizing community clean-up events makes
+								a direct impact on the environment. Beach and river clean-ups 
+								not only remove existing waste but also raise awareness and 
+								inspire others to act. Even spending one day collecting litter
+								can prevent hundreds of plastic items from entering the ocean. 
+								These actions strengthen community spirit and show that collective
+								effort can create real, visible change.
+							</p>
+						</sl-details>
+					</div>
+				</div>
+
+				<div class="row align-items-center mb-5 flex-md-row-reverse reveal-on-scroll reveal-right"
+					style="transition-delay: 240ms">
+					<div class="col-md-1 text-center">
+						<div class="help-number">4</div>
+					</div>
+					<div class="col-md-11">
+						<sl-details summary="Conserve Water at Home">
+							<p>
+								Water conservation helps reduce pollution by minimizing the amount
+								of contaminated wastewater that needs treatment. Simple actions 
+								like turning off the tap while brushing, fixing leaks, and using 
+								water-efficient appliances make a big difference over time.
+								When we use water wisely, we also reduce the energy needed to
+								pump, heat, and treat it—helping the environment in more ways 
+								than one. Saving water is saving life.
+							</p>
+						</sl-details>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- decorative bubbles (absolute positioned) -->
+		<div class="help-bubble b1"></div>
+		<div class="help-bubble b2"></div>
+		<div class="help-bubble b3"></div>
+		<div class="help-bubble b4"></div>
+	</section>
+
+	
+
+	<!-- Photos Section (Pinned) -->
+	<section id="photos" class="section section--photos">
+		<h2 class="section-title text-center text-light mb-4 reveal-on-scroll reveal-up">How water pollution can affect you</h2>
+		<div class="photos-stage" aria-label="Photo slideshow">
+			<img class="photo-img" src="/illustrator/Untitled_Artwork.jpg" alt="Photo 1" />
+			<img class="photo-img" src="/illustrator/Untitled_Artwork 2.jpg" alt="Photo 2" />
+			<img class="photo-img" src="/illustrator/Untitled_Artwork 3.jpg" alt="Photo 3" />
+			<img class="photo-img" src="/illustrator/Untitled_Artwork 4.jpg" alt="Photo 4" />
+		</div>
+	</section>
+
+
+
+	<!-- additional pages removed; homescreen kept minimal -->
+	<!-- GALLERY (Shoelace carousel) -->
+	<section id="gallery" class="py-5">
+		<div class="container text-center py-5 coral-offset">
+			<h2 class="section-title">Gallery</h2>
+			<div class="gallery-wrap mt-4">
+				<sl-carousel pagination navigation mouse-dragging loop>
+					<sl-carousel-item>
+						<img alt="gallery 1" src="/images/1.jpeg" />
+					</sl-carousel-item>
+					<sl-carousel-item>
+						<img alt="gallery 2" src="/images/2.png" />
+					</sl-carousel-item>
+					<sl-carousel-item>
+						<img alt="gallery 3" src="/images/3.jpg" />
+					</sl-carousel-item>
+				</sl-carousel>
+			</div>
+		</div>
+
+		<!-- Decorative coral strip at the bottom of the gallery -->
+		<div class="coral-wrap mt-4">
+			<div class="coral-strip" role="img" aria-label="Decorative coral reef">
+				<picture class="up">
+					<img src="assets/coral1.png" alt="Coral decoration 1" loading="lazy" />
+				</picture>
+				<picture>
+					<img src="assets/coral2.png" alt="Coral decoration 2" loading="lazy" />
+				</picture>
+				<picture>
+					<img src="assets/coral1.png" alt="Coral decoration 1" loading="lazy" />
+				</picture>
+				<picture class="up">
+					<img src="assets/coral2.png" alt="Coral decoration 2" loading="lazy" />
+				</picture>
+				<picture>
+					<img src="assets/coral4.png" alt="Coral decoration 4" loading="lazy" />
+				</picture>
+				<picture>
+					<img src="assets/coral3.png" alt="Coral decoration 3" loading="lazy" />
+				</picture>
+				<picture class="up">
+					<img src="assets/coral5.png" alt="Coral decoration 5" loading="lazy" />
+				</picture>
+				<picture>
+					<img src="assets/coral2.png" alt="Coral decoration 2" loading="lazy" />
+				</picture>
+				<picture>
+					<img src="assets/coral4.png" alt="Coral decoration 4" loading="lazy" />
+				</picture>
+				<picture class="up">
+					<img src="assets/coral1.png" alt="Coral decoration 1" loading="lazy" />
+				</picture>
+			</div>
+		</div>
+	</section>
+
+	<footer class="py-4 text-center text-light small">
+		© <span id="year"></span> Wave of Change
+	</footer>
+
+	<!-- JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- GSAP for animations -->
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+	<!-- GSAP ScrollTrigger plugin -->
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>

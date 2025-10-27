@@ -1,0 +1,1204 @@
+/* =========================================================
+   THEME VARIABLES & GLOBAL BASE
+   ========================================================= */
+
+/* Global look */
+:root {
+	--sky: #9fe3e2;
+	--wave1: #a6dff1;
+	--wave2: #6cc0f1;
+	--wave3: #2f86f6;
+	--deep1: #0b4fb7;
+	--deep2: #0a3f90;
+	--foam: #f3f7ff;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue",
+		Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	overflow-x: hidden;
+}
+
+h2 {
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+	height: 10vh;
+}
+
+.navbar-logo {
+	height: 70px;
+	width: auto;
+	display: block;
+}
+
+#mainNav .nav-link {
+	font-weight: 700;
+	color: #fff;
+	opacity: 0.9;
+}
+
+/* ensure no underline by default */
+#mainNav .nav-link {
+	text-decoration: none;
+}
+
+/* underline on hover and keyboard focus for accessibility */
+#mainNav .nav-link:hover,
+#mainNav .nav-link:focus {
+	text-decoration: underline;
+	text-underline-offset: 6px;
+	opacity: 1;
+}
+
+/* show active underline only when navbar is in scrolled state */
+.navbar.scrolled #mainNav .nav-link.active,
+.navbar.scrolled #mainNav .nav-link.active:focus {
+	text-decoration: underline;
+	text-underline-offset: 6px;
+	opacity: 1;
+}
+
+/* support Bootstrap's active state */
+.navbar.scrolled .nav-link.active {
+	text-decoration: underline;
+}
+
+
+/* =========================================================
+   NAVBAR (ON SCROLL: BLUR & BACKDROP)
+   ========================================================= */
+
+.navbar.scrolled {
+	backdrop-filter: blur(6px);
+	background: rgba(5, 34, 98, 0.072) !important;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.039);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+	background-color: var(--sky);
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.hero-content {
+	/* keep hero content below the waves so the heading can sit under the last layer */
+	z-index: 1;
+}
+
+.hero-logo {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	display: block;
+}
+
+sl-switch {
+	color: white;
+}
+
+
+/* =========================================================
+   WAVES (IMAGE LAYERS)
+   ========================================================= */
+
+.waves {
+	position: absolute;
+	inset: 0;
+	/* place waves above the hero content but below the navbar */
+	z-index: 1;
+	pointer-events: none;
+	display: block;
+	overflow: hidden;
+	/* ensure long images don't create horizontal scroll */
+}
+
+.wave-img {
+	/*
+		Images are centered horizontally and may be moved vertically by setting
+		the CSS variable --wave-offset. This keeps the container (.waves)
+		unchanged while allowing all image layers to be lifted closer to the
+		navbar on wider viewports. Mobile retains the default (0).
+	*/
+	position: absolute;
+	left: 50%;
+	/* preserve existing X translate while allowing a Y offset via variable */
+	transform: translateX(-50%) translateY(var(--wave-offset, 0));
+	max-width: none;
+	height: auto;
+	opacity: 0.98;
+	user-select: none;
+	pointer-events: none;
+	will-change: transform;
+	animation-name: drift;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+
+/* =========================================================
+   GENERIC SECTIONS
+   ========================================================= */
+
+.section-oc {
+	position: relative;
+	min-height: 100vh;
+}
+
+
+/* =========================================================
+   OUR MISSION + TIMELINE
+   ========================================================= */
+
+#mission {
+	background: linear-gradient(180deg, #0099ff 0%, #0b3a8a 100%);
+	min-height: 100vh;
+	color: white;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* vertical center */
+	align-items: center;     /* horizontal center for direct children */
+	text-align: center;      /* ensure headings/text are centered */
+}
+
+/* The actual timeline (the vertical ruler) */
+.main-timeline-2 {
+	position: relative;
+}
+
+.main-timeline-2 .card {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+	color: white;
+}
+
+/* The actual timeline (the vertical ruler) */
+.main-timeline-2::after {
+	content: "";
+	position: absolute;
+	width: 3px;
+	background-color: #ffffff;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	margin-left: -3px;
+}
+
+/* Container around content */
+.timeline-2 {
+	position: relative;
+	background-color: inherit;
+	width: 50%;
+}
+
+/* The circles on the timeline */
+.timeline-2::after {
+	content: "";
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	right: -11px;
+	background-color: #ffffff;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	z-index: 1;
+}
+
+/* Place the container to the left */
+.left-2 {
+	padding: 0px 40px 20px 0px;
+	left: 0;
+}
+
+/* Place the container to the right */
+.right-2 {
+	padding: 0px 0px 20px 40px;
+	left: 50%;
+}
+
+/* Fix the circle for containers on the right side */
+.right-2::after {
+	left: -14px;
+}
+
+
+/* =========================================================
+   PROBLEMS SECTION
+   ========================================================= */
+
+#problems {
+	/* Continue the gradient flow from #mission deeper into the ocean */
+	background: linear-gradient(180deg, #0b3a8a 0%, #0f337b 100%);
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	/* provide room for the bottom callout so it isn't clipped */
+	padding-bottom: 96px;
+}
+
+#problems .section-title {
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+.problems-stats .problems-percent {
+	font-weight: 800;
+	font-size: clamp(1.6rem, 4.5vw, 3rem);
+	line-height: 1;
+}
+
+.problems-stats .problems-caption {
+	opacity: 0.9;
+	font-size: 0.95rem;
+}
+
+.problems-eye-wrap {
+	position: relative;
+	width: min(440px, 62vw);
+	aspect-ratio: 1 / 1;
+}
+
+.problems-eye-wrap .eye-back,
+.problems-eye-wrap .eye {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.problems-eye-wrap .eye {
+	will-change: transform;
+}
+
+/* Make the front eye graphic smaller and centered within the round background */
+.problems-eye-wrap .eye {
+	/* override the full-size "inset:0" layout to center+shrink */
+	top: 50%;
+	left: 50%;
+	right: auto;
+	bottom: auto;
+	width: 56%;
+	height: 56%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+/* Ensure the round background sits underneath the eye */
+.problems-eye-wrap .eye-back {
+	z-index: 1;
+}
+
+.problems-callouts .callout {
+	position: absolute;
+	max-width: 280px;
+	font-size: 0.95rem;
+	opacity: 0.95;
+}
+
+/* callouts positioned relative to the whole section container */
+.problems-callouts {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 3;
+}
+
+.callout-left {
+	left: 7%;
+	top: 58%;
+}
+
+.callout-right {
+	right: 6%;
+	top: 40%;
+}
+
+.callout-bottom {
+	left: 40%;
+	bottom: -15%;
+	transform: translateX(-50%);
+}
+
+/* simple connecting lines using pseudo elements */
+.callout-left::after,
+.callout-right::after,
+.callout-bottom::after {
+	content: "";
+	position: absolute;
+	border-top: 2px solid rgba(255, 255, 255, 0.7);
+	width: 100px;
+	top: 50%;
+}
+
+.callout-left::after {
+	right: -130px;
+}
+
+.callout-right::after {
+	left: -120px;
+}
+
+.callout-bottom::after {
+	border-top: none;
+	border-left: 2px solid rgba(255, 255, 255, 0.7);
+	height: 150px;
+	width: 0;
+	left: 50%;
+	top: auto;
+	bottom: 100%;
+}
+
+
+/* =========================================================
+   HOW TO HELP SECTION
+   ========================================================= */
+
+#help {
+	background: linear-gradient(180deg, #0f337b 0%, #07183a 100%);
+	overflow: hidden;
+	min-height: 100vh;
+}
+
+#help .help-image {
+	max-width: 480px;
+	border-radius: 24px;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+	border: 6px solid rgba(255, 255, 255, 0.03);
+}
+
+.help-list sl-details {
+	--sl-details-background: transparent;
+	--sl-details-border-color: rgba(255, 255, 255, 0.06);
+	--sl-details-summary-padding: 0.5rem 1rem;
+	color: #000000;
+}
+
+.help-number {
+	width: 72px;
+	height: 72px;
+	line-height: 72px;
+	color: #ffffff;
+	font-weight: 800;
+	font-size: 2.2rem;
+	display: inline-block;
+}
+
+.help-bubble {
+	animation: bubbleFloat 6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PHOTOS SCROLL SECTION
+   ========================================================= */
+
+.section--photos {
+	background: #07183a;
+	position: relative;
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	padding: 4rem 1rem;
+}
+
+.photos-stage {
+	position: relative;
+	/* Always keep a landscape 16:9 frame and size it to fit viewport */
+	aspect-ratio: 16 / 9;
+	/* Width is limited by viewport width, a max cap, and available height converted to width (support vh & svh) */
+	width: min(92vw, 1100px, calc(65vh * 16 / 9), calc(65svh * 16 / 9));
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+	border-radius: 16px;
+	background: linear-gradient(180deg, #0b1020 0%, #0e1a39 100%);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.photo-img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	transform: scale(1.08);
+	will-change: transform, opacity;
+}
+
+
+/* =========================================================
+   GALLERY SECTION
+   ========================================================= */
+
+#gallery {
+	background: linear-gradient(180deg, #07183a 0%, #000000 100%);
+	color: #fff;
+	min-height: 100vh;
+	position: relative;
+	/* allow coral to be absolutely positioned to the bottom */
+}
+
+.gallery-wrap sl-carousel {
+	max-width: 760px;
+	margin: 0 auto;
+}
+
+.gallery-wrap sl-carousel img {
+	width: 360px;
+	height: auto;
+	/* let aspect-ratio control final height so image stays square */
+	aspect-ratio: 1 / 1;
+	/* ensure a true square box */
+	object-fit: cover;
+	border-radius: 50%;
+	border: 6px solid rgba(255, 255, 255, 0.03);
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	/* prevent overflow inside carousel container */
+}
+
+/* Ensure coral sits flush to the bottom of the #gallery section */
+.coral-wrap {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* keep coral visible above gallery content and below carousel */
+	z-index: 2;
+	padding-top: 0.5rem;
+	padding-bottom: 0.25rem;
+}
+
+/* Add extra bottom padding to the gallery content so carousel doesn't overlap corals */
+.coral-offset {
+	padding-bottom: 110px;
+	/* default space for coral images (matches desktop coral height + gap) */
+}
+
+
+/* =========================================================
+   FOOTER UTILITY
+   ========================================================= */
+
+footer {
+	position: relative;
+	z-index: 3;
+	background: #000000;
+	color: #fff;
+}
+
+
+/* =========================================================
+   DECORATIVE & MEDIA ASSETS
+   ========================================================= */
+
+/* WAVE PER-LAYER TRANSLATION OVERRIDE
+   (kept after initial .wave-img so it takes precedence) */
+.wave-img {
+	transform: translateX(-50%) translateY(-30vh);
+}
+
+/* DECORATIVE CORAL STRIP */
+.coral-strip {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.coral-strip picture {
+	display: block;
+	line-height: 0;
+}
+
+.coral-strip img {
+	height: 200px;
+	width: auto;
+	display: block;
+}
+
+.coral-strip .up img {
+	transform: scaleX(1);
+	transform: scaleY(1.5);
+	margin-right: -30px;
+	margin-left: -20px;
+}
+
+/* BUBBLES (DECORATIVE) - GLOBAL
+   - Uses assets/bubbles.png as the sprite/image for each bubble
+   - Bubbles are absolutely positioned in a full-viewport container
+   - JS will spawn bubbles and animate them; CSS contains base styles + fallback */
+
+.bubble-layer {
+	position: fixed;
+	inset: 0;
+	pointer-events: none; /* allow clicks to pass through */
+	z-index: 4;          /* high but below UI if needed (adjust if you have overlays) */
+}
+
+.bubble {
+	position: absolute;
+	width: 48px;  /* default size, JS randomizes */
+	height: 48px;
+	background-image: url("../assets/bubbles.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.9;
+	will-change: transform, opacity;
+	transform-origin: center;
+	border-radius: 50%;
+	pointer-events: auto; /* allow clicks on bubbles */
+	cursor: pointer;
+}
+
+/* MISSION SECTION: decorative non-interactive bubbles
+   These are separate from the interactive global bubble-layer.
+   They use the same sprite `assets/bubbles.png` and provide a
+   subtle depth effect behind the timeline text. */
+
+.mission-bubbles {
+	position: absolute;
+	inset: 0;           /* fill the mission section */
+	pointer-events: none; /* decorative only */
+	z-index: 0;           /* sit behind content (timeline has relative positioning) */
+	overflow: hidden;
+}
+
+.mission-bubble {
+	position: absolute;
+	background-image: url("../assets/bubbles.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.16;
+	filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.08));
+	border-radius: 50%;
+	transform-origin: center;
+	will-change: transform, opacity;
+	animation: missionBubbleFloat 8s ease-in-out infinite;
+}
+
+/* Individual placements & size tweaks */
+.mission-bubble.b-m1 {
+	width: 110px;
+	height: 110px;
+	left: 12%;
+	top: 18%;
+	opacity: 0.18;
+	animation-duration: 10s;
+}
+
+.mission-bubble.b-m2 {
+	width: 62px;
+	height: 62px;
+	left: 28%;
+	top: 36%;
+	opacity: 0.12;
+	animation-duration: 7.6s;
+	animation-delay: 0.6s;
+}
+
+.mission-bubble.b-m3 {
+	width: 88px;
+	height: 88px;
+	right: 20%;
+	top: 24%;
+	opacity: 0.14;
+	animation-duration: 11.2s;
+	animation-delay: 0.2s;
+}
+
+.mission-bubble.b-m4 {
+	width: 46px;
+	height: 46px;
+	right: 28%;
+	top: 44%;
+	opacity: 0.11;
+	animation-duration: 8.6s;
+	animation-delay: 0.9s;
+}
+
+.mission-bubble.b-m5 {
+	width: 72px;
+	height: 72px;
+	left: 44%;
+	top: 8%;
+	opacity: 0.13;
+	animation-duration: 9.4s;
+	animation-delay: 0.3s;
+}
+
+/* make sure mission content sits above bubbles */
+#mission > .container,
+#mission .main-timeline-2 {
+	position: relative;
+	z-index: 2;
+}
+
+/* Decorative fishes for mission section */
+.mission-fishes {
+	position: absolute;
+	left: 20%;
+	bottom: 20%;
+	z-index: 1;       /* above bubbles but below content */
+	pointer-events: none;
+	transform: translateZ(0);
+}
+
+.mission-fish {
+	width: 220px;
+	height: auto;
+	opacity: 0.95;
+	filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.18));
+	animation: fishFloat 4.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL UTILITIES
+   ========================================================= */
+
+.reveal-on-scroll {
+	opacity: 0;
+	transform: translate3d(0, 0, 0);
+	will-change: transform, opacity;
+	transition: opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* directional offsets for initial state */
+.reveal-on-scroll.reveal-up {
+	transform: translate3d(0, 24px, 0);
+}
+
+.reveal-on-scroll.reveal-down {
+	transform: translate3d(0, -24px, 0);
+}
+
+.reveal-on-scroll.reveal-left {
+	transform: translate3d(-32px, 0, 0);
+}
+
+.reveal-on-scroll.reveal-right {
+	transform: translate3d(32px, 0, 0);
+}
+
+.reveal-on-scroll.reveal-zoom {
+	transform: scale(0.96);
+}
+
+/* final state */
+.reveal-on-scroll.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+
+/* =========================================================
+   HELP: Video thumbnail + dialog
+   ========================================================= */
+
+.help-video-rotator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	/* Use explicit square sizing to avoid aspect-ratio quirks */
+	width: min(360px, 78vw);
+	height: min(360px, 78vw);
+	box-sizing: border-box;
+	/* Use background image so we can control fit without clipping */
+	background-image: url('../assets/video image.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	/* Fit the entire PNG; no clipping */
+	background-size: contain; /* show entire PNG, no cropping */
+	overflow: visible;
+	animation: spinCW 18s linear infinite;
+	/* Let clicks nudge the scale without affecting rotation */
+	transition: scale 200ms ease-out;
+}
+
+.help-video-thumb {
+	display: block;
+	width: 100%;
+	height: auto;
+	/* preserve natural aspect ratio to avoid clipping */
+	border: none;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+	user-select: none;
+	object-fit: contain; /* safe even if height is auto */
+}
+
+.help-video-rotator:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.6);
+	outline-offset: 4px;
+}
+
+/* Shoelace dialog sizing for the video */
+.help-video-dialog::part(panel) {
+	width: min(920px, 92vw);
+}
+
+.video-responsive {
+	position: relative;
+	width: 100%;
+	/* 16:9 ratio */
+	aspect-ratio: 16 / 9;
+}
+
+.video-responsive iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	display: block;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes bubbleFloat {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-10px); }
+	100% { transform: translateY(0); }
+}
+
+@keyframes missionBubbleFloat {
+	0%   { transform: translateY(0) scale(1); }
+	50%  { transform: translateY(-8px) scale(1.02); }
+	100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes fishFloat {
+	0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+	50%  { transform: translateY(-10px) translateX(10px) rotate(-1.2deg); }
+	100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+/* CSS fallback animation if JS/GSAP unavailable: a gentle rise and fade */
+@keyframes bubbleRise {
+	0%   { transform: translateY(0) scale(1); opacity: 0; }
+	10%  { opacity: 0.9; }
+	100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
+
+/* pop animation (CSS fallback) */
+@keyframes bubblePop {
+	0%   { transform: scale(1); opacity: 1; }
+	100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* click pulse animation */
+@keyframes thumbPulse {
+	0%   { transform: scale(1); }
+	50%  { transform: scale(0.96); }
+	100% { transform: scale(1); }
+}
+
+@keyframes spinCW {
+	from { rotate: 0deg; }
+	to   { rotate: 360deg; }
+}
+
+
+/* =========================================================
+   FALLBACK / STATE CLASSES (BUBBLES)
+   ========================================================= */
+
+.bubble.fallback {
+	animation: bubbleRise var(--bubble-duration, 15s) linear infinite;
+}
+
+.bubble.pop {
+	animation: bubblePop 320ms cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.bubble.repel {
+	transition: transform 340ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* =========================================================
+   MEDIA QUERIES (CONSOLIDATED AT BOTTOM)
+   ========================================================= */
+
+/* ------------------------------
+   PREFERS-REDUCED-MOTION (GLOBAL)
+   ------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.reveal-on-scroll {
+		transition: none !important;
+		opacity: 1 !important;
+		transform: none !important;
+	}
+
+	.mission-bubble,
+	.mission-fish,
+	.wave-img {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+
+/* ------------------------------
+   ≤ 1024px
+   ------------------------------ */
+@media (max-width: 1024px) {
+	/* Problems: tablet adjustments */
+	.problems-callouts .callout {
+		max-width: 240px;
+	}
+
+	/* On tablet and below, place callouts under the eye, remove connector bars */
+	.problems-callouts {
+		position: static;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.85rem;
+		margin-top: 1rem;
+		padding: 0 1rem;
+		pointer-events: auto;
+	}
+
+	.problems-callouts .callout {
+		position: static;
+		max-width: 720px;
+		text-align: center;
+		left: auto;
+		right: auto;
+		top: auto;
+		bottom: auto;
+	}
+
+	/* Remove decorative connector bars on smaller screens */
+	.callout-left::after,
+	.callout-right::after,
+	.callout-bottom::after {
+		content: none;
+	}
+
+	/* Fix: bottom callout inherited translateX(-50%) from desktop, reset it */
+	.callout-bottom {
+		transform: none;
+	}
+
+	/* Photos stage (tablet) */
+	.photos-stage {
+		/* Slightly smaller on tablet, still enforcing landscape and height fit */
+		width: min(88vw, calc(58vh * 16 / 9), calc(58svh * 16 / 9));
+		height: auto;
+		border-radius: 12px;
+	}
+
+	/* Coral strip height (tablet) */
+	.coral-strip img {
+		height: 100px;
+	}
+}
+
+
+/* ------------------------------
+   ≤ 991px
+   ------------------------------ */
+@media (max-width: 991px) {
+	/* Navbar sizing and layout */
+	.navbar {
+		height: auto;
+		min-height: 56px; /* Bootstrap default navbar height for small screens */
+	}
+
+	/* Let the collapsed navbar expand naturally */
+	.navbar .collapse.show {
+		max-height: none;
+		overflow: visible;
+	}
+
+	/* Make nav links stack nicely in the overlay */
+	.navbar .navbar-nav {
+		flex-direction: column;
+		gap: 0.25rem;
+		align-items: stretch;
+	}
+
+	/* Increase tappable area for toggler and keep it visually consistent */
+	.navbar-toggler {
+		z-index: 1050; /* appear above the collapsed overlay to avoid jump when clicking */
+	}
+
+	/* Give the navbar brand some breathing room on tablet/mobile */
+	.navbar-brand,
+	.navbar-collapse {
+		padding-left: 1rem;
+	}
+
+	/* Hero tweaks */
+	.hero-title {
+		font-size: 4rem;
+	}
+
+	.hero {
+		min-height: 100vh;
+	}
+
+	.wave-img {
+		opacity: 0.95;
+	}
+
+	/* Mission tweaks */
+	.mission-divider {
+		display: none;
+	}
+
+	.mission-title {
+		margin-bottom: 1.75rem;
+	}
+
+	.mission-text {
+		font-size: 1.05rem;
+		line-height: 1.7;
+	}
+
+	.mission-fishline {
+		left: 4%;
+		bottom: -6px;
+	}
+
+	/* Gallery height */
+	#gallery {
+		min-height: 100vh;
+	}
+
+	/* Hero logo sizing */
+	.hero-logo {
+		width: 80%;
+		max-width: 420px;
+	}
+}
+
+/* ------------------------------
+   ≤ 768px
+   ------------------------------ */
+@media (max-width: 768px) {
+	/* Problems: mobile stacked layout */
+	.problems-callouts {
+		display: flex;
+		gap: 0.75rem;
+		margin-top: 0.75rem;
+		padding: 0 0.75rem;
+	}
+
+	.problems-callouts .callout {
+		max-width: 560px;
+		font-size: 0.95rem;
+	}
+
+	/* ensure connector bars remain disabled */
+	.callout-left::after,
+	.callout-right::after,
+	.callout-bottom::after {
+		content: none;
+	}
+
+	/* Keep translation cleared on mobile as well */
+	.callout-bottom {
+		transform: none;
+	}
+
+	/* Hero sizing */
+	.hero {
+		height: 100vh;
+	}
+
+	.hero-content {
+		padding: 0 1rem; /* ensure the content stays beneath the waves on small screens as well */
+		z-index: 1;
+	}
+
+	/* Slightly larger left padding on small phones for extra comfort */
+	.navbar-brand {
+		padding-left: 1.25rem;
+	}
+
+	/* reduce visual clutter on mobile */
+	.reef,
+	.diagram,
+	.bubble-mask {
+		display: none;
+	}
+
+	/* Place the timeline to the left */
+	.main-timeline-2::after {
+		left: 31px;
+	}
+
+	/* Full-width containers */
+	.timeline-2 {
+		width: 100%;
+		padding-left: 70px;
+		padding-right: 25px;
+	}
+
+	/* Make sure that all arrows are pointing leftwards */
+	.timeline-2::before {
+		left: 60px;
+		border: medium solid white;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent white transparent transparent;
+	}
+
+	/* Make sure all circles are at the same spot */
+	.left-2::after,
+	.right-2::after {
+		left: 18px;
+	}
+
+	.left-2::before {
+		right: auto;
+	}
+
+	/* Make all right containers behave like the left ones */
+	.right-2 {
+		left: 0%;
+	}
+
+	/* Force right-aligned text to be left-aligned inside left timeline containers on small screens */
+	.timeline-2.left-2 .text-end {
+		text-align: left !important;
+	}
+
+	/* Gallery height on smaller screens */
+	#gallery {
+		min-height: 70vh;
+	}
+
+	/* HOW TO HELP specific small-screen tweaks */
+	.help-number {
+		width: 56px;
+		height: 56px;
+		line-height: 56px;
+		font-size: 1.6rem;
+	}
+
+	#help .help-image {
+		max-width: 320px;
+	}
+
+	.help-bubble {
+		display: none;
+	}
+
+	#help .help-video {
+		max-width: 480px;
+		border-radius: 24px;
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+		border: 6px solid rgba(255, 255, 255, 0.03);
+		display: inline-block;
+		/* ensure the video covers the rounded box nicely */
+		object-fit: cover;
+	}
+
+	/* Gallery carousel sizing */
+	.gallery-wrap sl-carousel img {
+		width: 240px;
+		height: auto;
+		aspect-ratio: 1 / 1;
+	}
+
+	.gallery-wrap sl-carousel {
+		max-width: 100%;
+	}
+
+	/* Help: responsive square sizing to ensure no clipping across viewports */
+	.help-video-rotator {
+		width: min(260px, 78vw);
+		height: min(260px, 78vw);
+	}
+}
+
+
+/* ------------------------------
+   ≤ 576px
+   ------------------------------ */
+@media (max-width: 576px) {
+	/* Navbar logo size */
+	.navbar-logo {
+		height: 36px;
+	}
+
+	/* Footer layout adjustments when stacked */
+	#main-footer .d-flex.justify-content-between {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	/* Gallery coral offset */
+	.coral-offset {
+		padding-bottom: 72px;
+	}
+
+	/* Coral strip compaction */
+	.coral-strip img {
+		height: 65px;
+	}
+
+	.coral-strip {
+		gap: 0.5rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	/* Help video rotator (phones) */
+	.help-video-rotator {
+		width: min(200px, 78vw);
+		height: min(200px, 78vw);
+	}
+}
+
+
+/* ------------------------------
+   ≤ 480px
+   ------------------------------ */
+@media (max-width: 480px) {
+	/* ensure mission section has room at the bottom in tight layouts */
+	#mission {
+		padding-bottom: 3.5rem;
+	}
+}
